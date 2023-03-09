@@ -2,10 +2,9 @@ import SwiftUI
 
 public final class StackNavigationRouter: NavigationRouter {
     // MARK: - Private variables
-    private let navigationController: UINavigationController = .init()
+    private lazy var navigationController: UINavigationController = .init()
     
     private let window: UIWindow
-    private var homeViewController: UIViewController? = nil
     
     public init(window: UIWindow) {
         self.window = window
@@ -25,7 +24,6 @@ public final class StackNavigationRouter: NavigationRouter {
     
     public func start<Content: View>(content: Content) {
         let viewController = UIMasterHostingController(rootView: content)
-        homeViewController = viewController
         navigationController.setViewControllers([viewController], animated: false)
     }
     

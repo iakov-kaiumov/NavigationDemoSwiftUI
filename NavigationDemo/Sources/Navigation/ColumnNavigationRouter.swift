@@ -28,7 +28,6 @@ public final class ColumnNavigationRouter: NavigationRouter {
     private lazy var emptyViewController: UIViewController = UIHostingController(rootView: EmptyView())
     
     private let window: UIWindow
-    private var homeViewController: UIViewController? = nil
     
     public init(window: UIWindow) {
         self.window = window
@@ -51,7 +50,6 @@ public final class ColumnNavigationRouter: NavigationRouter {
     
     public func start<Content: View>(content: Content) {
         let viewController = UIMasterHostingController(rootView: content)
-        homeViewController = viewController
         masterNavigationController.setViewControllers([viewController], animated: false)
         detailNavigationController.setViewControllers([emptyViewController], animated: false)
     }
